@@ -26,15 +26,15 @@
     - [x] **Health Module** <!-- id: 20 -->
         - [x] HealthController <!-- id: 21 -->
         - [x] Health Views (Index, with modal for steps) <!-- id: 22 -->
-    - [ ] **Work Module** <!-- id: 23 -->
-        - [ ] WorkController <!-- id: 24 -->
-        - [ ] Work Views <!-- id: 25 -->
-    - [ ] **Kids / Parenting Module** <!-- id: 26 -->
-        - [ ] KidsController <!-- id: 27 -->
-        - [ ] Kids Views <!-- id: 28 -->
-    - [ ] **Home Life Module** <!-- id: 26.1 -->
-         - [ ] HomeController (Chores/Bills) <!-- id: 26.2 -->
-         - [ ] Home Views <!-- id: 26.3 -->
+    - [x] **Work Module** <!-- id: 23 -->
+        - [x] WorkController <!-- id: 24 -->
+        - [x] Work Views <!-- id: 25 -->
+    - [x] **Kids / Parenting Module** <!-- id: 26 -->
+        - [x] KidsController <!-- id: 27 -->
+        - [x] Kids Views <!-- id: 28 -->
+    - [x] **Home Life Module** <!-- id: 26.1 -->
+         - [x] HomeController (Chores/Bills) <!-- id: 26.2 -->
+         - [x] Home Views <!-- id: 26.3 -->
     - [ ] **Account / Auth** <!-- id: 29 -->
         - [ ] AccountController (Login/Register mock or Identity) <!-- id: 30 -->
         - [ ] Account Views <!-- id: 31 -->
