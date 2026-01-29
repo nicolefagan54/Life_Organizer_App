@@ -1,0 +1,42 @@
+# Life Organizer App - Task List
+
+- [x] Project Initialization <!-- id: 0 -->
+    - [x] Create ASP.NET Core MVC Project (`LifeOrganizerApp`) <!-- id: 1 -->
+    - [x] Initialize Git Repository & .gitignore <!-- id: 1.1 -->
+    - [/] Setup folder structure (Services, etc.) <!-- id: 2 -->
+    - [x] Configure `appsettings.json` and Database Connection (SQLite) <!-- id: 3 -->
+- [x] Database & Models <!-- id: 4 -->
+    - [x] Create `User` model <!-- id: 5 -->
+    - [x] Create `Task` model (Work/General) <!-- id: 6 -->
+    - [x] Create `HealthRecord` model <!-- id: 7 -->
+    - [x] Create `Kid` and `Chore` models <!-- id: 8 -->
+    - [x] Create `Event` model <!-- id: 9 -->
+    - [x] Create `Bill` model <!-- id: 9.1 -->
+    - [x] Setup `AppDbContext` and Entity Framework Core <!-- id: 10 -->
+    - [x] Run initial migration <!-- id: 11 -->
+- [x] Core Logic & Services <!-- id: 12 -->
+    - [x] Implement `NotificationService` (stub/basic) <!-- id: 13 -->
+    - [x] Implement `CalendarService` <!-- id: 14 -->
+    - [x] Implement `HealthService` <!-- id: 15 -->
+- [ ] Controllers & Views <!-- id: 16 -->
+    - [x] **Home / Dashboard** <!-- id: 17 -->
+        - [x] HomeController <!-- id: 18 -->
+        - [x] Dashboard View <!-- id: 19 -->
+    - [ ] **Health Module** <!-- id: 20 -->
+        - [ ] HealthController <!-- id: 21 -->
+        - [ ] Health Views (Index, Create, Edit) <!-- id: 22 -->
+    - [ ] **Work Module** <!-- id: 23 -->
+        - [ ] WorkController <!-- id: 24 -->
+        - [ ] Work Views <!-- id: 25 -->
+    - [ ] **Kids / Parenting Module** <!-- id: 26 -->
+        - [ ] KidsController <!-- id: 27 -->
+        - [ ] Kids Views <!-- id: 28 -->
+    - [ ] **Account / Auth** <!-- id: 29 -->
+        - [ ] AccountController (Login/Register mock or Identity) <!-- id: 30 -->
+        - [ ] Account Views <!-- id: 31 -->
+- [ ] UI & Styling <!-- id: 32 -->
+    - [ ] Setup `wwwroot` CSS/JS (Bootstrap or custom) <!-- id: 33 -->
+    - [ ] Apply "Premium" design aesthetics (Dark/Light mode support) <!-- id: 34 -->
+- [ ] Verification <!-- id: 35 -->
+    - [ ] Build and Run <!-- id: 36 -->
+    - [ ] Create Walkthrough <!-- id: 37 -->
