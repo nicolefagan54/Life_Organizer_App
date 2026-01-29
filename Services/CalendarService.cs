@@ -15,11 +15,13 @@ namespace LifeOrganizerApp.Services
 
         public async Task<List<Event>> GetUpcomingEventsAsync(int userId, int days = 7)
         {
-            return await _context.Events
+            var events = await _context.Events
                 .Where(e => e.UserId == userId && e.Date >= DateTime.Today && e.Date <= DateTime.Today.AddDays(days))
                 .OrderBy(e => e.Date)
-                .ThenBy(e => e.Time)
                 .ToListAsync();
+            
+            // Perform time sorting in memory since SQLite EF Core provider struggles with TimeSpan ordering
+            return events.OrderBy(e => e.Date).ThenBy(e => e.Time).ToList();
         }
 
         public async Task<List<AppTask>> GetDueTasksAsync(int userId, int days = 7)

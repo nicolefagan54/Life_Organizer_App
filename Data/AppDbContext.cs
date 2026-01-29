@@ -15,5 +15,6 @@ namespace LifeOrganizerApp.Data
         public DbSet<Kid> Kids => Set<Kid>();
         public DbSet<Event> Events => Set<Event>();
         public DbSet<Chore> Chores => Set<Chore>();
+        public DbSet<Bill> Bills => Set<Bill>();
     }
 }
