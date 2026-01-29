@@ -1,0 +1,183 @@
+@model List<LifeOrganizerApp.Models.Kid>
+@{
+    ViewData["Title"] = "Parenting & Kids";
+    var events = ViewBag.KidEvents as List<LifeOrganizerApp.Models.Event> ?? new List<LifeOrganizerApp.Models.Event>();
+    var chores = ViewBag.KidChores as List<LifeOrganizerApp.Models.Chore> ?? new List<LifeOrganizerApp.Models.Chore>();
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="display-5 text-purple fw-bold" style="color: #6f42c1;"><i class="bi bi-people-fill"></i> Parenting</h1>
+                <p class="text-muted">Manage schedules, school, and chores.</p>
+            </div>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addKidModal">
+                <i class="bi bi-person-plus-fill"></i> Add Child
+            </button>
+        </div>
+    </div>
+
+    <!-- Kids Profiles -->
+    <div class="row mb-5 g-4">
+        @if (Model.Any())
+        {
+            @foreach (var kid in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 h-100 rounded-4">
+                        <div class="card-body text-center">
+                            <div class="avatar circle bg-light mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                                <i class="bi bi-emoji-smile display-4 text-warning"></i>
+                            </div>
+                            <h4 class="fw-bold">@kid.Name</h4>
+                            <p class="text-muted small">@kid.Age years old • @kid.SchoolInfo</p>
+                            
+                            <hr />
+                            <!-- Mini Chore List for Kid -->
+                            <h6 class="text-start fs-6 fw-bold">Assigned Chores</h6>
+                            @{
+                                var myChores = chores.Where(c => c.AssignedToKidId == kid.KidId).ToList();
+                            }
+                            @if (myChores.Any())
+                            {
+                                <ul class="list-group list-group-flush text-start small">
+                                    @foreach (var chore in myChores)
+                                    {
+                                         <li class="list-group-item d-flex justify-content-between px-0 border-0">
+                                            <span>@chore.Title</span>
+                                            @if(chore.Status == "Completed")
+                                            {
+                                                <span class="badge bg-success">Done</span>
+                                            }
+                                            else
+                                            {
+                                                <form asp-action="CompleteChore" method="post">
+                                                    <input type="hidden" name="id" value="@chore.ChoreId" />
+                                                    <button class="btn btn-xs btn-outline-secondary p-0 px-2 rounded-pill">Mark Done</button>
+                                                </form>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="text-muted small fst-italic">No chores assigned.</p>
+                            }
+                            <button class="btn btn-sm btn-light w-100 mt-3" data-bs-toggle="modal" data-bs-target="#assignChoreModal-@kid.KidId">+ Assign Chore</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal to Assign Chore Specific to Kid -->
+                <div class="modal fade" id="assignChoreModal-@kid.KidId" tabindex="-1">
+                    <div class="modal-dialog">
+                        <form asp-action="AddChore" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Assign Chore to @kid.Name</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="assignedKidId" value="@kid.KidId" />
+                                    <div class="mb-3">
+                                        <label class="form-label">Chore Title</label>
+                                        <input type="text" name="title" class="form-control" placeholder="e.g. Clean Room" required />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Assign</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center py-5 bg-white rounded-4 shadow-sm">
+                <h3 class="text-muted">No family profiles yet.</h3>
+                <p>Add a child details to start tracking school, chores, and activities.</p>
+            </div>
+        }
+    </div>
+
+    <!-- Family Calendar / School Schedule -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold text-danger"><i class="bi bi-calendar-check"></i> School & Activities</h5>
+                    <button class="btn btn-sm btn-outline-danger">Add Event</button>
+                </div>
+                <div class="card-body">
+                    @if (events.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Event</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Category</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var evt in events)
+                                    {
+                                        <tr>
+                                            <td class="fw-bold">@evt.Title</td>
+                                            <td>@evt.Date.ToShortDateString()</td>
+                                            <td>@evt.Time</td>
+                                            <td><span class="badge bg-soft-primary text-primary">@evt.Category</span></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No upcoming school events or activities found.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Kid Modal -->
+<div class="modal fade" id="addKidModal" tabindex="-1">
+    <div class="modal-dialog">
+        <form asp-action="AddKid" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Child Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        <input type="number" name="age" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">School / Grade Info</label>
+                        <input type="text" name="schoolInfo" class="form-control" placeholder="e.g. 5th Grade, Lincoln Elementary" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
