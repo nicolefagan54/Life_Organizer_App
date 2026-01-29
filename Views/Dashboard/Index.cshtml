@@ -1,0 +1,120 @@
+@model LifeOrganizerApp.Models.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 fw-bold text-primary">Welcome, @Model.User!.Name!</h1>
+            <p class="lead text-muted">Here is your life at a glance for @DateTime.Now.ToLongDateString().</p>
+        </div>
+    </div>
+
+    @if (Model.Notifications.Any())
+    {
+        <div class="row mb-4">
+            <div class="col-12">
+                @foreach (var note in Model.Notifications)
+                {
+                    <div class="alert alert-warning alert-dismissible fade show shadow-sm" role="alert">
+                        <i class="bi bi-bell-fill me-2"></i> @note
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <div class="row g-4">
+        <!-- Health Card -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-success text-white py-3">
+                    <h4 class="mb-0"><i class="bi bi-heart-pulse-fill me-2"></i> Health</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span>Water</span>
+                        <span class="badge bg-primary rounded-pill">@Model.TodayHealth!.WaterIntake glasses</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 10px;">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: @(Model.TodayHealth.WaterIntake * 12.5)%"></div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span>Steps</span>
+                        <span class="fw-bold">@Model.TodayHealth.Steps</span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-success btn-sm">Log Water (+1)</button>
+                        <a href="#" class="btn btn-light btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work / Tasks Card -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-primary text-white py-3">
+                    <h4 class="mb-0"><i class="bi bi-check-circle-fill me-2"></i> Tasks (Today)</h4>
+                </div>
+                <div class="card-body">
+                    @if (Model.TodayTasks.Any())
+                    {
+                        <ul class="list-group list-group-flush mb-3">
+                            @foreach (var task in Model.TodayTasks)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="task-@task.TaskId">
+                                        <label class="form-check-label" for="task-@task.TaskId">@task.Title</label>
+                                    </div>
+                                    <span class="badge bg-secondary">@task.Priority</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted fst-italic">No tasks due today. Great job!</p>
+                    }
+                    
+                    <div class="mt-auto">
+                        <button class="btn btn-outline-primary w-100 btn-sm">+ Add Task</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home / Calendar Card -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-warning text-dark py-3">
+                    <h4 class="mb-0"><i class="bi bi-calendar-event-fill me-2"></i> Upcoming</h4>
+                </div>
+                <div class="card-body">
+                    @if (Model.UpcomingEvents.Any())
+                    {
+                        <ul class="list-unstyled">
+                            @foreach (var evt in Model.UpcomingEvents)
+                            {
+                                <li class="mb-2 pb-2 border-bottom">
+                                    <div class="fw-bold">@evt.Title</div>
+                                    <div class="small text-muted">@evt.Date.ToShortDateString() @evt.Time</div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                         <p class="text-muted">Nothing on the user schedule soon.</p>
+                    }
+                     <button class="btn btn-outline-warning w-100 btn-sm text-dark">Open Calendar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

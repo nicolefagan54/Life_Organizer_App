@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<LifeOrganizerApp.Services.HealthService>();
 builder.Services.AddScoped<LifeOrganizerApp.Services.CalendarService>();
 builder.Services.AddScoped<LifeOrganizerApp.Services.NotificationService>();
+builder.Services.AddScoped<LifeOrganizerApp.Services.TaskService>();
 
 var app = builder.Build();
 
@@ -32,7 +33,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

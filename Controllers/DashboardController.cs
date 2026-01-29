@@ -8,21 +8,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LifeOrganizerApp.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly HealthService _healthService;
         private readonly CalendarService _calendarService;
         private readonly NotificationService _notificationService;
         private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, 
+        public DashboardController(
             HealthService healthService, 
             CalendarService calendarService, 
             NotificationService notificationService,
             AppDbContext context)
         {
-            _logger = logger;
             _healthService = healthService;
             _calendarService = calendarService;
             _notificationService = notificationService;
@@ -50,20 +48,16 @@ namespace LifeOrganizerApp.Controllers
         {
             var user = await GetOrCreateDefaultUserAsync();
             
-            // Home Life Module: Chores and Bills
-            // For now, returning basic view, will implement full Chores/Bills logic later or now if needed.
-            return View();
-        }
+            var viewModel = new DashboardViewModel
+            {
+                User = user,
+                TodayHealth = await _healthService.GetTodayRecordAsync(user.UserId),
+                TodayTasks = await _calendarService.GetDueTasksAsync(user.UserId, 1), 
+                UpcomingEvents = await _calendarService.GetUpcomingEventsAsync(user.UserId, 3), 
+                Notifications = await _notificationService.GetDailySummaryAsync(user.UserId)
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(viewModel);
         }
     }
 }
