@@ -1,27 +1,45 @@
-# Life Organizer App - Professional Practicum Documentation
+# Life Organizer App
+## Professional Practicum Documentation
+
+### Table of Contents
+1. [Introduction](#1-introduction)
+2. [Target Users](#2-target-users)
+3. [System Overview](#3-system-overview)
+4. [Functional Requirements](#4-functional-requirements)
+5. [Module Requirements](#5-module-requirements)
+6. [Non-Functional Requirements](#6-non-functional-requirements)
+7. [System Architecture](#7-system-architecture)
+8. [Database Design](#8-database-design)
+9. [Workflow Descriptions](#9-workflow-descriptions)
+10. [Folder Structure](#10-folder-structure)
+11. [Conclusion](#11-conclusion)
+
+---
 
 ## 1. Introduction
+
 ### 1.1 Purpose of the Application
-The Life Organizer App is designed to help individuals and families manage the core areas of daily living: health, work, home responsibilities, and parenting. The application centralizes schedules, tasks, reminders, and progress tracking into one unified platform, enabling users to maintain balance, reduce stress, and improve productivity.
+The **Life Organizer App** is designed to help individuals and families manage the core areas of daily living: health, work, home responsibilities, and parenting. The application centralizes schedules, tasks, reminders, and progress tracking into one unified platform, enabling users to maintain balance, reduce stress, and improve productivity.
 
 ### 1.2 Project Scope
 The app provides tools for:
-*   Health tracking and goal setting
-*   Work task and project management
-*   Home life organization (chores, bills, shopping lists)
-*   Parenting support (kids’ schedules, homework, activities)
-*   A unified dashboard and smart reminders
+*   **Health Tracking**: Goal setting, daily habits, and history.
+*   **Work Management**: Task lists, project organization, and focus tools.
+*   **Home Life**: Household chores, bill tracking, and shared responsibilities.
+*   **Parenting**: Kids’ profiles, school schedules, and assigned activities.
+*   **Unified Dashboard**: A "single pane of glass" view for daily overview.
 
-The system is designed for scalability, multi‑user support, and cross‑device synchronization.
+The system is designed for scalability, multi-user support, and cross-device synchronization.
 
 ## 2. Target Users
-| User Type | Needs Addressed |
+
+| User Type | Primary Needs Addressed |
 | :--- | :--- |
-| **Working Professionals** | Work tasks, meetings, health habits |
-| **Parents** | Kids’ schedules, homework, activities |
-| **Students** | Study planning, health tracking |
-| **Families** | Shared calendars, chores, meal planning |
-| **Health‑focused Users** | Fitness, meals, mood tracking |
+| **Working Professionals** | Work tasks, meeting schedules, health habits |
+| **Parents** | Kids’ schedules, school events, chore assignments |
+| **Students** | Study planning, habit tracking |
+| **Families** | Shared calendars, household maintenance, bills |
+| **Health-Conscious Users** | Water intake, step counting, mood tracking |
 
 ## 3. System Overview
 The Life Organizer App is divided into four primary modules:
@@ -30,167 +48,155 @@ The Life Organizer App is divided into four primary modules:
 3.  **Home Life Management Module**
 4.  **Parenting / Kids Module**
 
-Each module contains its own screens, workflows, and data structures but integrates into a shared dashboard and calendar.
+Each module contains its own screens, workflows, and data structures but integrates into a shared **Dashboard** and **Calendar**.
 
 ## 4. Functional Requirements
+
 ### 4.1 Global Functional Requirements
-*   User registration and authentication
-*   Dashboard displaying daily overview
-*   Calendar with day/week/month views
-*   Smart reminders and notifications
-*   CRUD operations for all modules
-*   Data backup and export
-*   Multi‑profile support (family mode)
+*   User registration and secure authentication.
+*   Dashboard displaying a daily overview of all modules.
+*   Centralized Calendar with Day/Week/Month views.
+*   Smart reminders and notifications for due items.
+*   Full CRUD (Create, Read, Update, Delete) operations for all entities.
+*   Multi-profile support (e.g., Family Mode).
 
 ## 5. Module Requirements
+
 ### 5.1 Health Module
 **Features**
-*   Daily health checklist
-*   Water, sleep, steps tracking
-*   Workout planner
-*   Meal planning
-*   Medication reminders
-*   Mood tracking
-*   Health goals and streaks
+*   Daily health checklist (Water, Steps, Sleep).
+*   Mood tracking with visual history.
+*   Health history log (7-day view).
+*   Goal setting for daily habits.
 
 **Functions**
-*   Add/edit/delete health entries
-*   Generate weekly health summaries
-*   Trigger reminders for workouts, meals, medication
+*   Log daily water intake and step counts.
+*   Update mood status.
+*   View historical health trends.
 
 ### 5.2 Work Module
 **Features**
-*   Work task manager
-*   Priority levels
-*   Project tracking
-*   Meeting reminders
-*   Notes section
-*   Focus mode (Pomodoro timer)
+*   Task Manager with Priority levels (Low, Medium, High).
+*   Active vs. Completed task views.
+*   Upcoming Work Meetings sidebar.
+*   Focus Mode (Pomodoro style timer).
 
 **Functions**
-*   Create/edit/delete tasks
-*   Assign deadlines and priorities
-*   Track project progress
-*   Schedule meetings with reminders
+*   Create, edit, and delete work tasks.
+*   Mark tasks as complete.
+*   Filter tasks by priority or due date.
 
 ### 5.3 Home Life Module
 **Features**
-*   Household chore scheduler
-*   Bill reminders
-*   Budget tracker
-*   Grocery and shopping lists
-*   Home maintenance calendar
-*   Meal planning (shared with Health module)
+*   Bill Tracker (Amount, Due Date, Status).
+*   Household Chore Scheduler (General/Unassigned).
+*   Visual status indicators for Overdue Bills.
 
 **Functions**
-*   Add/edit/delete chores
-*   Track bill due dates
-*   Manage shopping lists
-*   Schedule recurring home maintenance tasks
+*   Add and track monthly bills.
+*   Mark bills as Paid.
+*   Manage general household maintenance tasks.
 
 ### 5.4 Parenting / Kids Module
 **Features**
-*   Kids’ school schedule
-*   Homework tracker
-*   Extracurricular activities
-*   Chore charts
-*   Medical information
-*   Emergency contacts
-*   Shared family calendar
+*   Child Profiles (Name, Age, School Info).
+*   School Schedule and Event Calendar.
+*   Assigned Chore Charts per child.
 
 **Functions**
-*   Add/edit/delete child profiles
-*   Track homework and activities
-*   Assign chores to children
-*   Store medical and emergency information
+*   Add and manage child profiles.
+*   Assign specific chores to children.
+*   Track school events and activities.
 
-## 6. Non‑Functional Requirements
+## 6. Non-Functional Requirements
+
 ### 6.1 Performance
-*   App must load dashboard within 2 seconds
-*   Calendar interactions must be smooth and responsive
+*   Dashboard loads within 2 seconds.
+*   Database queries are optimized for responsiveness.
 
 ### 6.2 Security
-*   Password hashing
-*   Secure database access
-*   Optional multi‑factor authentication
+*   Password hashing for user accounts.
+*   Secure database connections.
+*   Data validation for all inputs.
 
 ### 6.3 Usability
-*   Clean, intuitive UI
-*   Color‑coded categories
-*   Accessible for all ages
+*   Clean, modern, and intuitive User Interface (UI).
+*   Color-coded categories for easy visual distinction.
+*   Responsive design for various screen sizes.
 
 ### 6.4 Scalability
-*   Support for multiple user profiles
-*   Cloud synchronization
+*   Built on ASP.NET Core MVC for robust scalability.
+*   Entity Framework Core support for SQL Server or SQLite.
 
 ## 7. System Architecture
-### 7.1 MVC Architecture
-The app follows the Model‑View‑Controller pattern.
 
-**Models**
-Represent data structures such as:
-*   User
-*   Task
-*   HealthRecord
-*   Kid
-*   Event
-*   Chore
-*   Bill
+### 7.1 MVC Pattern
+The application follows the **Model-View-Controller** architectural pattern.
 
-**Views**
-User interface screens:
-*   Dashboard
-*   Health
-*   Work
-*   Home
-*   Kids
-*   Calendar
-*   Settings
+**Models** (Data Structures)
+*   `User`: System user/parent.
+*   `AppTask`: Work and personal tasks.
+*   `HealthRecord`: Daily statistics.
+*   `Kid`: Child profiles.
+*   `Event`: Calendar scheduler.
+*   `Chore`: Household tasks.
+*   `Bill`: Financial tracking.
 
-**Controllers**
-Handle logic and communication between models and views.
+**Views** (User Interface)
+*   Dashboard (Overview)
+*   Health (Tracker)
+*   Work (Tasks)
+*   Home (Bills/Chores)
+*   Kids (Parenting)
 
-## 8. Database Design (ERD Description)
-### Tables and Key Fields
-| Table | Key Fields |
-| :--- | :--- |
-| **Users** | `UserID` (PK), `Name`, `Email`, `PasswordHash` |
-| **Tasks** | `TaskID` (PK), `UserID` (FK), `Title`, `Category`, `DueDate`, `Priority`, `Status` |
-| **HealthRecords** | `HealthID` (PK), `UserID` (FK), `Steps`, `Water`, `Sleep`, `Mood`, `Date` |
-| **Kids** | `KidID` (PK), `UserID` (FK), `Name`, `Age`, `SchoolInfo` |
-| **Events** | `EventID` (PK), `UserID` (FK), `Title`, `Category`, `Date`, `Time` |
-| **Chores** | `ChoreID` (PK), `UserID` (FK), `AssignedTo`, `Frequency`, `Status` |
-| **Bills** | `BillID` (PK), `UserID` (FK), `Amount`, `DueDate`, `Category`, `Status` |
+**Controllers** (Logic)
+*   `DashboardController`
+*   `HealthController`
+*   `WorkController`
+*   `HomeController`
+*   `KidsController`
+
+## 8. Database Design
+
+### Key Tables
+| Table | Primary Key | Key Attributes |
+| :--- | :--- | :--- |
+| **Users** | `UserId` | Name, Email, PasswordHash |
+| **Tasks** | `TaskId` | Title, Category, DueDate, Priority, Status |
+| **HealthRecords** | `HealthId` | Steps, Water, Mood, Date |
+| **Kids** | `KidId` | Name, Age, SchoolInfo |
+| **Events** | `EventId` | Title, Category, Date, Time |
+| **Chores** | `ChoreId` | Title, AssignedTo, Frequency, Status |
+| **Bills** | `BillId` | Amount, DueDate, Category, Status |
 
 ### Relationships
-*   One User → Many Tasks
-*   One User → Many HealthRecords
-*   One User → Many Kids
-*   One Kid → Many Events
-*   One User → Many Chores
-*   One User → Many Bills
+*   **1 User** has **Many** Tasks, HealthRecords, Kids, Chores, Bills.
+*   **1 Kid** has **Many** Events (School/Activities).
+*   **1 Chore** can be assigned to **1 Kid** (optional).
 
 ## 9. Workflow Descriptions
+
 ### 9.1 Add Task Workflow
-1.  User selects “Add Task”
-2.  Enters title, category, date, priority
-3.  Saves task
-4.  Task appears in dashboard and calendar
-5.  Reminder is scheduled
+1.  User selects “New Task” in Work Module.
+2.  Enters Title, Due Date, and Priority.
+3.  Saves task; System updates Database.
+4.  Task appears in "Active Tasks" list immediately.
 
 ### 9.2 Health Tracking Workflow
-1.  User logs water, sleep, steps
-2.  Data stored in HealthRecords
-3.  Dashboard updates
-4.  Weekly summary generated
+1.  User clicks "Log Water (+1)" or "Add Steps".
+2.  System retrieves today's record or creates a new one.
+3.  Updates the specific counter.
+4.  Dashboard reflects the new numbers instantly.
 
-### 9.3 Kids’ Schedule Workflow
-1.  Parent adds child profile
-2.  Adds school schedule and activities
-3.  Calendar updates
-4.  Reminders sent
+### 9.3 Kids Chore Assignment
+1.  Parent adds a Child Profile.
+2.  Clicks "Assign Chore" on the child's card.
+3.  Enters chore details (e.g., "Clean Room").
+4.  Chore appears under that specific child's profile.
 
-## 10. Folder Structure (Professional Layout)
+## 10. Folder Structure
+The project follows a standard professional ASP.NET Core MVC layout:
+
 ```text
 LifeOrganizerApp/
 │
@@ -200,11 +206,10 @@ LifeOrganizerApp/
 │   ├── WorkController.cs
 │   ├── HomeController.cs
 │   ├── KidsController.cs
-│   ├── AccountController.cs
 │
 ├── Models/
 │   ├── User.cs
-│   ├── Task.cs
+│   ├── AppTask.cs
 │   ├── HealthRecord.cs
 │   ├── Kid.cs
 │   ├── Event.cs
@@ -217,13 +222,13 @@ LifeOrganizerApp/
 │   ├── Work/
 │   ├── Home/
 │   ├── Kids/
-│   ├── Account/
+│   ├── Shared/
 │
 ├── Services/
-│   ├── NotificationService.cs
 │   ├── CalendarService.cs
 │   ├── HealthService.cs
 │   ├── TaskService.cs
+│   ├── NotificationService.cs
 │
 ├── Data/
 │   ├── AppDbContext.cs
@@ -231,12 +236,10 @@ LifeOrganizerApp/
 ├── wwwroot/
 │   ├── css/
 │   ├── js/
-│   ├── images/
+│   ├── lib/
 │
 └── appsettings.json
 ```
 
 ## 11. Conclusion
-The Life Organizer App provides a comprehensive, scalable, and user‑friendly solution for managing health, work, home responsibilities, and parenting tasks. Its modular design, intuitive interface, and robust functionality make it suitable for individuals and families seeking better balance and organization in daily life.
-
-This documentation outlines the full system requirements, architecture, workflows, and data structures necessary for development and practicum submission.
+The **Life Organizer App** is a comprehensive solution for personal family management. By integrating health, work, and family responsibilities into a single interface, it simplifies daily logistics and empowers users to stay organized. This project demonstrates full-stack development capabilities using **ASP.NET Core**, **Entity Framework Core**, and modern **MVC** principles.
