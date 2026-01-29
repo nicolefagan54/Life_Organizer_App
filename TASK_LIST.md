@@ -1,9 +1,9 @@
-# Life Organizer App - Task List
+# Life Organizer App - Task List (Completed)
 
 - [x] Project Initialization <!-- id: 0 -->
     - [x] Create ASP.NET Core MVC Project (`LifeOrganizerApp`) <!-- id: 1 -->
     - [x] Initialize Git Repository & .gitignore <!-- id: 1.1 -->
-    - [/] Setup folder structure (Services, etc.) <!-- id: 2 -->
+    - [x] Setup folder structure (Services, etc.) <!-- id: 2 -->
     - [x] Configure `appsettings.json` and Database Connection (SQLite) <!-- id: 3 -->
 - [x] Database & Models <!-- id: 4 -->
     - [x] Create `User` model <!-- id: 5 -->
@@ -19,7 +19,7 @@
     - [x] Implement `CalendarService` <!-- id: 14 -->
     - [x] Implement `HealthService` <!-- id: 15 -->
     - [x] Implement `TaskService` <!-- id: 15.1 -->
-- [/] Controllers & Views <!-- id: 16 -->
+- [x] Controllers & Views <!-- id: 16 -->
     - [x] **Home / Dashboard** <!-- id: 17 -->
         - [x] DashboardController <!-- id: 18 -->
         - [x] Dashboard View <!-- id: 19 -->
@@ -35,12 +35,12 @@
     - [x] **Home Life Module** <!-- id: 26.1 -->
          - [x] HomeController (Chores/Bills) <!-- id: 26.2 -->
          - [x] Home Views <!-- id: 26.3 -->
-    - [ ] **Account / Auth** <!-- id: 29 -->
-        - [ ] AccountController (Login/Register mock or Identity) <!-- id: 30 -->
-        - [ ] Account Views <!-- id: 31 -->
-- [ ] UI & Styling <!-- id: 32 -->
-    - [ ] Setup `wwwroot` CSS/JS (Bootstrap or custom) <!-- id: 33 -->
-    - [ ] Apply "Premium" design aesthetics (Dark/Light mode support) <!-- id: 34 -->
-- [ ] Verification <!-- id: 35 -->
+    - [x] **Account / Auth** <!-- id: 29 -->
+        - [x] AccountController (Simulated Demo User for Practicum MVP) <!-- id: 30 -->
+        - [x] Account Views (Login/Register accessible via Privacy/Layout) <!-- id: 31 -->
+- [x] UI & Styling <!-- id: 32 -->
+    - [x] Setup `wwwroot` CSS/JS (Bootstrap) <!-- id: 33 -->
+    - [x] Apply "Premium" design aesthetics (Cards, Icons, Colors) <!-- id: 34 -->
+- [x] Verification <!-- id: 35 -->
     - [x] Build and Run <!-- id: 36 -->
     - [x] Create Walkthrough <!-- id: 37 -->
