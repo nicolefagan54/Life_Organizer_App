@@ -1,0 +1,146 @@
+@model LifeOrganizerApp.Models.HealthRecord
+@{
+    ViewData["Title"] = "Health Tracker";
+    var history = ViewBag.History as List<LifeOrganizerApp.Models.HealthRecord> ?? new List<LifeOrganizerApp.Models.HealthRecord>();
+}
+
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-5 text-success"><i class="bi bi-heart-pulse-fill"></i> Health Tracker</h1>
+            <p class="text-muted">Stay healthy, stay organized.</p>
+        </div>
+    </div>
+
+    <!-- Today's Stats -->
+    <div class="row g-4 mb-5">
+        <!-- Water -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 bg-soft-info">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-info">Water</h3>
+                    <div class="display-4 fw-bold">@Model.WaterIntake</div>
+                    <p class="text-muted">glasses</p>
+                    <form asp-action="LogWater" method="post">
+                        <button type="submit" class="btn btn-outline-info rounded-pill px-4">+ Drink Water</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 bg-soft-success">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-success">Steps</h3>
+                    <div class="display-4 fw-bold">@Model.Steps</div>
+                    <p class="text-muted">steps</p>
+                    
+                    <button type="button" class="btn btn-outline-success rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#addStepsModal">
+                        + Add Steps
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mood -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 bg-soft-warning">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-warning">Mood</h3>
+                    <div class="display-4">
+                        @if (string.IsNullOrEmpty(Model.Mood))
+                        {
+                            <span>😐</span>
+                        }
+                        else
+                        {
+                            <span>@Model.Mood</span>
+                        }
+                    </div>
+                     <p class="text-muted">Current Mood</p>
+                    <div class="btn-group" role="group">
+                        <form asp-action="SetMood" method="post" class="d-inline">
+                            <input type="hidden" name="mood" value="😊" />
+                            <button class="btn btn-sm btn-outline-warning border-0">😊</button>
+                        </form>
+                        <form asp-action="SetMood" method="post" class="d-inline">
+                             <input type="hidden" name="mood" value="😐" />
+                            <button class="btn btn-sm btn-outline-warning border-0">😐</button>
+                        </form>
+                        <form asp-action="SetMood" method="post" class="d-inline">
+                             <input type="hidden" name="mood" value="😔" />
+                            <button class="btn btn-sm btn-outline-warning border-0">😔</button>
+                        </form>
+                         <form asp-action="SetMood" method="post" class="d-inline">
+                             <input type="hidden" name="mood" value="😡" />
+                            <button class="btn btn-sm btn-outline-warning border-0">😡</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow rounded-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0">Past 7 Days History</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Water</th>
+                                    <th>Steps</th>
+                                    <th>Mood</th>
+                                    <th>Sleep</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in history)
+                                {
+                                    <tr>
+                                        <td>@item.Date.ToShortDateString()</td>
+                                        <td>@item.WaterIntake</td>
+                                        <td>@item.Steps</td>
+                                        <td>@item.Mood</td>
+                                        <td>@item.SleepHours hrs</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Steps Modal -->
+<div class="modal fade" id="addStepsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <form asp-action="UpdateSteps" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Steps</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Steps Count</label>
+                        <input type="number" name="steps" class="form-control" placeholder="e.g. 1000" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Add Steps</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

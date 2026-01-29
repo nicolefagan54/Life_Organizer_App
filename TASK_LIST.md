@@ -18,19 +18,23 @@
     - [x] Implement `NotificationService` (stub/basic) <!-- id: 13 -->
     - [x] Implement `CalendarService` <!-- id: 14 -->
     - [x] Implement `HealthService` <!-- id: 15 -->
-- [ ] Controllers & Views <!-- id: 16 -->
+    - [x] Implement `TaskService` <!-- id: 15.1 -->
+- [/] Controllers & Views <!-- id: 16 -->
     - [x] **Home / Dashboard** <!-- id: 17 -->
-        - [x] HomeController <!-- id: 18 -->
+        - [x] DashboardController <!-- id: 18 -->
         - [x] Dashboard View <!-- id: 19 -->
-    - [ ] **Health Module** <!-- id: 20 -->
-        - [ ] HealthController <!-- id: 21 -->
-        - [ ] Health Views (Index, Create, Edit) <!-- id: 22 -->
+    - [x] **Health Module** <!-- id: 20 -->
+        - [x] HealthController <!-- id: 21 -->
+        - [x] Health Views (Index, with modal for steps) <!-- id: 22 -->
     - [ ] **Work Module** <!-- id: 23 -->
         - [ ] WorkController <!-- id: 24 -->
         - [ ] Work Views <!-- id: 25 -->
     - [ ] **Kids / Parenting Module** <!-- id: 26 -->
         - [ ] KidsController <!-- id: 27 -->
         - [ ] Kids Views <!-- id: 28 -->
+    - [ ] **Home Life Module** <!-- id: 26.1 -->
+         - [ ] HomeController (Chores/Bills) <!-- id: 26.2 -->
+         - [ ] Home Views <!-- id: 26.3 -->
     - [ ] **Account / Auth** <!-- id: 29 -->
         - [ ] AccountController (Login/Register mock or Identity) <!-- id: 30 -->
         - [ ] Account Views <!-- id: 31 -->
@@ -38,5 +42,5 @@
     - [ ] Setup `wwwroot` CSS/JS (Bootstrap or custom) <!-- id: 33 -->
     - [ ] Apply "Premium" design aesthetics (Dark/Light mode support) <!-- id: 34 -->
 - [ ] Verification <!-- id: 35 -->
-    - [ ] Build and Run <!-- id: 36 -->
-    - [ ] Create Walkthrough <!-- id: 37 -->
+    - [x] Build and Run <!-- id: 36 -->
+    - [x] Create Walkthrough <!-- id: 37 -->
